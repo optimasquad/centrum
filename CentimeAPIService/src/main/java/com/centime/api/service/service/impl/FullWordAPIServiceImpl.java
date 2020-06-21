@@ -3,6 +3,8 @@ package com.centime.api.service.service.impl;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,7 @@ import com.centrum.model.WordResponse;
 @Service
 public class FullWordAPIServiceImpl implements FullWordAPIService {
 
-	private static final String USERNAME = "test";
-	private static final String PASSWORD = "test";
+	private static final Logger LOG = LogManager.getLogger(FullWordAPIService.class);
 
 	@Autowired
 	private WordsApi wordsApi;
@@ -31,8 +32,8 @@ public class FullWordAPIServiceImpl implements FullWordAPIService {
 
 	@PostConstruct
 	protected void setUp() {
-		apiClient.setUsername(USERNAME);
-		apiClient.setPassword(PASSWORD);
+		apiClient.setBasePath(apiClient.getBasePath().replace("localhost", "localhost:8080"));
+		LOG.info("API Base Path {}", apiClient.getBasePath());
 	}
 
 	@Override
@@ -44,9 +45,11 @@ public class FullWordAPIServiceImpl implements FullWordAPIService {
 
 		FullConcentatedWordResponse fullConcentatedWordResponse = new FullConcentatedWordResponse();
 
-		String finalResponse = wordresponse.getMessage() + concentatedWordResponse.getName()
-				+ concentatedWordResponse.getSurname();
-		fullConcentatedWordResponse.setFullWord(finalResponse);
+		StringBuilder builder = new StringBuilder();
+		builder.append(wordresponse.getMessage()).append(" ").append(concentatedWordResponse.getName()).append(" ")
+				.append(concentatedWordResponse.getSurname());
+
+		fullConcentatedWordResponse.setFullWord(builder.toString());
 
 		return fullConcentatedWordResponse;
 	}
