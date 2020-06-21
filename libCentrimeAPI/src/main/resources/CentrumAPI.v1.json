@@ -8,8 +8,12 @@
    "basePath":"/v1",
    "tags":[
       {
-         "name":"healthCheck",
-         "description":"Everything about your Pets"
+         "name":"health",
+         "description":"Everything about health of apis"
+      },
+      {
+         "name":"words",
+         "description":"Word to be retrieved"
       }
    ],
    "schemes":[
@@ -24,7 +28,7 @@
             ],
             "summary":"Checking the health check of the api",
             "description":"Checking the health check of the api",
-            "operationId":"health",
+            "operationId":"getHealth",
             "produces":[
                "application/json"
             ],
@@ -33,6 +37,33 @@
                   "description":"healh of api",
                   "schema":{
                      "$ref":"#/definitions/SucessResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
+         }
+      },
+      "/word":{
+         "get":{
+            "tags":[
+               "words"
+            ],
+            "summary":"Retrieve the word from the api",
+            "description":"Retrieve the word from the api",
+            "operationId":"retrieveWord",
+            "produces":[
+               "application/json"
+            ],
+            "responses":{
+               "200":{
+                  "description":"retrieve word of the api",
+                  "schema":{
+                     "$ref":"#/definitions/WordResponse"
                   }
                },
                "400":{
@@ -52,6 +83,15 @@
             "message":{
                "type":"string",
                "description":"A human readable description of the success"
+            }
+         }
+      },
+      "WordResponse":{
+         "type":"object",
+         "properties":{
+            "message":{
+               "type":"string",
+               "description":"A human readable word"
             }
          }
       }
