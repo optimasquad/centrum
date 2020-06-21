@@ -73,6 +73,58 @@
                   "description":"Permission denied"
                }
             }
+         },
+         "post":{
+            "tags":[
+               "words"
+            ],
+            "summary":"Retrieve the word from the api",
+            "description":"Retrieve the word from the api",
+            "operationId":"getConcateWord",
+            "produces":[
+               "application/json"
+            ],
+            "responses":{
+               "200":{
+                  "description":"retrieve word of the api",
+                  "schema":{
+                     "$ref":"#/definitions/ConcentatedWordResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
+         }
+      },
+      "/fullWord":{
+         "post":{
+            "tags":[
+               "words"
+            ],
+            "summary":"Retrieve final words response from the api's that are word api and concatenant word api",
+            "description":"Retrieve full concatenated words response from the api",
+            "operationId":"retrieveFullConcentatedWord",
+            "produces":[
+               "application/json"
+            ],
+            "responses":{
+               "200":{
+                  "description":"retrieve full concatenated word of the api",
+                  "schema":{
+                     "$ref":"#/definitions/FullConcentatedWordResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
          }
       }
    },
@@ -92,6 +144,28 @@
             "message":{
                "type":"string",
                "description":"A human readable word"
+            }
+         }
+      },
+      "ConcentatedWordResponse":{
+         "type":"object",
+         "properties":{
+            "name":{
+               "type":"string",
+               "description":"Name of the person"
+            },
+            "surname":{
+               "type":"string",
+               "description":"surname of the person"
+            }
+         }
+      },
+      "FullConcentatedWordResponse":{
+         "type":"object",
+         "properties":{
+            "FullWord":{
+               "type":"string",
+               "description":"Full concentanated word"
             }
          }
       }
