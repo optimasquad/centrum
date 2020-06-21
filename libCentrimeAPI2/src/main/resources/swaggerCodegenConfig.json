@@ -1,0 +1,6 @@
+{
+	"modelPackage": "com.centrum.model",
+	"apiPackage": "com.centrum.api",
+	"library": "resttemplate",
+	"sourceFolder": "src"
+}

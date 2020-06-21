@@ -1,0 +1,59 @@
+{
+   "swagger":"2.0",
+   "info":{
+      "description":"These are the sample apis for the centrum system",
+      "version":"1.0.0",
+      "title":"Centrum APIstore"
+   },
+   "basePath":"/v1",
+   "tags":[
+      {
+         "name":"healthCheck",
+         "description":"Everything about your Pets"
+      }
+   ],
+   "schemes":[
+      "https",
+      "http"
+   ],
+   "paths":{
+      "/health":{
+         "get":{
+            "tags":[
+               "health"
+            ],
+            "summary":"Checking the health check of the api",
+            "description":"Checking the health check of the api",
+            "operationId":"health",
+            "produces":[
+               "application/json"
+            ],
+            "responses":{
+               "200":{
+                  "description":"healh of api",
+                  "schema":{
+                     "$ref":"#/definitions/SucessResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
+         }
+      }
+   },
+   "definitions":{
+      "SucessResponse":{
+         "type":"object",
+         "properties":{
+            "message":{
+               "type":"string",
+               "description":"A human readable description of the success"
+            }
+         }
+      }
+   }
+}
