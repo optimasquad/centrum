@@ -1,5 +1,5 @@
 
-package com.centime.api.entity;
+package com.centime.api.service.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class Profession {
 
 	private String color;
 
-	protected Profession() {
+	public Profession() {
 
 	}
 

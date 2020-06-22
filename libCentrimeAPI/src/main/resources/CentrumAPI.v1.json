@@ -151,6 +151,7 @@
                {
                   "name":"id",
                   "in":"path",
+                  "required":true,
                   "description":"Unique id",
                   "type":"integer",
                   "format":"int64"

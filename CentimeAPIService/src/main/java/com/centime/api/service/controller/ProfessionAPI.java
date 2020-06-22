@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.centrum.model.AllProfessionsResponse;
 import com.centrum.model.ProfessionalIdResponse;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-06-21T17:43:40.344Z")
+
+@Api(value = "profession", description = "the profession API")
+@RequestMapping(value = "/v1")
 public interface ProfessionAPI {
 
 	@ApiOperation(value = "Retrieve all professions", nickname = "getAllProfessions", notes = "Retrieve all professions", response = AllProfessionsResponse.class, tags = {
