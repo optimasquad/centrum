@@ -14,10 +14,13 @@
       {
          "name":"words",
          "description":"Word to be retrieved"
+      },
+      {
+         "name":"profession",
+         "description":"profession to be retrieved"
       }
    ],
    "schemes":[
-      "https",
       "http"
    ],
    "paths":{
@@ -84,6 +87,9 @@
             "produces":[
                "application/json"
             ],
+            "consumes":[
+               "application/json"
+            ],
             "responses":{
                "200":{
                   "description":"retrieve word of the api",
@@ -111,11 +117,77 @@
             "produces":[
                "application/json"
             ],
+            "consumes":[
+               "application/json"
+            ],
             "responses":{
                "200":{
                   "description":"retrieve full concatenated word of the api",
                   "schema":{
                      "$ref":"#/definitions/FullConcentatedWordResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
+         }
+      },
+      "/profession/{id}":{
+         "get":{
+            "tags":[
+               "profession"
+            ],
+            "summary":"Retrieve profession on basis of id",
+            "description":"Retrieve profession on basis of id",
+            "operationId":"getProfessionFromId",
+            "produces":[
+               "application/json"
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"Unique id",
+                  "type":"integer",
+                  "format":"int64"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"retrieve profession on basis of id",
+                  "schema":{
+                     "$ref":"#/definitions/ProfessionalIdResponse"
+                  }
+               },
+               "400":{
+                  "description":"Bad request"
+               },
+               "403":{
+                  "description":"Permission denied"
+               }
+            }
+         }
+      },
+      "/profession":{
+         "get":{
+            "tags":[
+               "profession"
+            ],
+            "summary":"Retrieve all professions",
+            "description":"Retrieve all professions",
+            "operationId":"getAllProfessions",
+            "produces":[
+               "application/json"
+            ],
+            "responses":{
+               "200":{
+                  "description":"retrieve all professions",
+                  "schema":{
+                     "$ref":"#/definitions/AllProfessionsResponse"
                   }
                },
                "400":{
@@ -167,6 +239,29 @@
                "type":"string",
                "description":"Full concentanated word"
             }
+         }
+      },
+      "ProfessionalIdResponse":{
+         "type":"object",
+         "properties":{
+            "name":{
+               "type":"string",
+               "description":"name of the profession"
+            },
+            "subProfession":{
+               "type":"array",
+               "description":"list of sub professions",
+               "items":{
+                  "type":"string"
+               }
+            }
+         }
+      },
+      "AllProfessionsResponse":{
+         "type":"array",
+         "description":"retrieve all professions",
+         "items":{
+            "$ref":"$/ProfessionalIdResponse"
          }
       }
    }
