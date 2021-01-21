@@ -15,7 +15,7 @@
 		<generated-sources-path>${project.build.directory}/generated-sources</generated-sources-path>
 		<generated-sources-java-path>main/java</generated-sources-java-path>
 		<ws.spec.dir>${basedir}/src/main/resources</ws.spec.dir>
-		<jackson.version>2.9.6</jackson.version>
+		<jackson.version>2.12.1</jackson.version>
 	</properties>
 
 	<dependencies>
